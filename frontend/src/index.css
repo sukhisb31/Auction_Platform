@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mochiy+Pop+One&family=Oleo+Script+Swash+Caps:wght@400;700&display=swap");
+
+@import "tailwindcss";
+
+ 
+  #root {
+    overflow-x: hidden;
+    width: 100%;
+  }
