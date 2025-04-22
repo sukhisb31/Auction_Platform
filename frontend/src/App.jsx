@@ -1,10 +1,18 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './components/pages/home/Home'
+import SideDrawer from './components/layout/SideDrawer'
 
 const App = () => {
   return (
-    <div>
-      <h1 className='text-4xl text-red-800'>HEllo World</h1>
-    </div>
+    <>
+      <BrowserRouter>
+      <SideDrawer/>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
