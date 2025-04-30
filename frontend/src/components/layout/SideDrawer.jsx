@@ -46,7 +46,7 @@ const SideDrawer = () => {
             </h1>
           </Link>
           <ul className="flex flex-col gap-3">
-              {/*-------------------- Auction -------------------*/}
+            {/*-------------------- Auction -------------------*/}
             <li>
               <Link
                 to={"/auctions"}
@@ -55,7 +55,7 @@ const SideDrawer = () => {
                 <RiAuctionFill /> Auctions
               </Link>
             </li>
-              {/*-------------------- LeaderBoard -----------------*/}
+            {/*-------------------- LeaderBoard -----------------*/}
             <li>
               <Link
                 to={"/leaderboard"}
@@ -76,7 +76,7 @@ const SideDrawer = () => {
                     <FaFileInvoiceDollar /> Submit Commission
                   </Link>
                 </li>
-                  {/*----------------- Create -Auction -------------------*/}
+                {/*----------------- Create -Auction -------------------*/}
                 <li>
                   <Link
                     to={"/create-auction"}
@@ -96,71 +96,99 @@ const SideDrawer = () => {
                 </li>
               </>
             )}
-            {
-              isAuthenticated && user && user.role === "Super Admin" && (
-                <li>
-              <Link
-                to={"/dashboard"}
-                className="flex text-xl font-semibold gap-2 items-center hover:text-[#D6482b] hover:transition-all hover:duration-150"
-              >
-                <MdDashboard /> Dashboard 
-              </Link>
-            </li>
-              )
-            }
+            {isAuthenticated && user && user.role === "Super Admin" && (
+              <li>
+                <Link
+                  to={"/dashboard"}
+                  className="flex text-xl font-semibold gap-2 items-center hover:text-[#D6482b] hover:transition-all hover:duration-150"
+                >
+                  <MdDashboard /> Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
-          {
-            !isAuthenticated ? (
-              <>
-                <div className="my-4 flex gap-2">
-                  <Link to={"/sign-up"}>Sign Up</Link>
-                  <Link to={"/login"} >Login</Link>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="my-4 flex gap-4 w-fit" onClick={handleLogout}>
-                  <button>Logout</button>
-                </div>
-              </>
-            )
-          }
-          <hr className="mb-4 border-t-[#D6482b]"/>
+          {!isAuthenticated ? (
+            <>
+              <div className="my-4 flex gap-2">
+                <Link to={"/sign-up"} className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl py-1 px-4 rounded-md text-white">Sign Up</Link>
+                <Link
+                  to={"/login"}
+                  className="text-[#DECCBE] bg-transparent border-[#DECCBE] border-2 hover:bg-[#fffefd] hover:text-[#fdba88] font-bold text-xl text-xl py-1 px-4 rounded-md"
+                >
+                  Login
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="my-4 flex gap-4 w-fit" onClick={handleLogout}>
+                <button className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl text-xl py-1 px-4 rounded-md text-white"> Logout</button>
+              </div>
+            </>
+          )}
+          <hr className="mb-4 border-t-[#D6482b]" />
           <ul className="flex flex-col gap-3">
-          <li>
+            <li>
               <Link
                 to={"/how-to-works-info"}
                 className="flex text-xl font-semibold gap-2 items-center hover:text-[#D6482b] hover:transition-all hover:duration-150"
               >
-                < SiGooglesearchconsole/> How it Works
+                <SiGooglesearchconsole /> How it Works
               </Link>
-              </li>
-              {/*--------------- About --------------*/}
-              <li>
+            </li>
+            {/*--------------- About --------------*/}
+            <li>
               <Link
                 to={"/about"}
                 className="flex text-xl font-semibold gap-2 items-center hover:text-[#D6482b] hover:transition-all hover:duration-150"
               >
-                < BsFillInfoSquareFill/> About Us
+                <BsFillInfoSquareFill /> About Us
               </Link>
-              </li>
+            </li>
           </ul>
-          <IoMdCloseCircleOutline onClick={()=> setShow(!show)} className="absolute top-0 right-4 text-[26px] sm:hidden"/>
+          <IoMdCloseCircleOutline
+            onClick={() => setShow(!show)}
+            className="absolute top-0 right-4 text-[26px] sm:hidden"
+          />
         </div>
 
         {/*---------------- Social icons -----------------*/}
         <div>
           <div className="flex gap-3 items-center mb-2">
             {/*------------------- Facebook -----------------*/}
-            <Link to={"/"} className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-blue-700"><FaFacebook /></Link>
+            <Link
+              to={"/"}
+              className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-blue-700"
+            >
+              <FaFacebook />
+            </Link>
 
-            <Link to={"/"} className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-pink-500"><RiInstagramFill /></Link>
-
+            <Link
+              to={"/"}
+              className="bg-white text-stone-500 p-2 text-xl rounded-sm hover:text-pink-500"
+            >
+              <RiInstagramFill />
+            </Link>
           </div>
 
           {/*------------------ Contact Us -----------------*/}
-          <Link to={"/contact"} className="text-stone-500 font-semibold hover:text-[#d6482b] hover:transition-all">Contact Us</Link>
-          
+          <Link
+            to={"/contact"}
+            className="text-stone-500 font-semibold hover:text-[#d6482b] hover:transition-all"
+          >
+            Contact Us
+          </Link>
+
+          <p className="text-stone-500"> &copy; PrimeBid, LLC.</p>
+          <p className="text-stone-500">
+            Design By{" "}
+            <Link
+              to={""}
+              className="font-semibold hover:text-[#d6482b] hover:transition-all hover:duration-150"
+            >
+              Sukhwinder Sigh
+            </Link>
+          </p>
         </div>
       </div>
     </>

@@ -33,7 +33,7 @@ const userSlice = createSlice({
 
 export const logout = ()=> async(dispatch)=> {
     try {
-        const response = await axios.get("", {withCredentials: true});
+        const response = await axios.get("http://localhost:8000/api/v1/user/logout", {withCredentials: true});
         dispatch(userSlice.actions.logoutSuccess());
         toast.success(response.data.message);
         dispatch(userSlice.actions.clearAllErrors());
