@@ -11,6 +11,25 @@ const userSlice = createSlice({
         leaderboard: [],
     },
     reducers: {
+        // register request
+        registerRequest(state, action){
+            state.loading = true;
+            state.isAuthenticated = false;
+            state.user = {};
+        },
+        // register success
+        registerSuccess(state, action){
+            state.loading = false;
+            state.isAuthenticated = true;
+            state.user = action.payload.user;
+        },
+        // register Failed
+        registerFailed(state, action){
+            state.loading = false;
+            state.isAuthenticated = false;
+            state.user = {};
+        },
+
         logoutSuccess (state,action){
             state.isAuthenticated = false;
             state.user = {};
@@ -30,6 +49,20 @@ const userSlice = createSlice({
     },
 });
 
+//----- register
+export const register = (data) => async(dispatch) =>{
+    dispatch(userSlice.actions.registerRequest());
+    try {
+        const response = await axios.post("http://localhost:8000/api/v1/user/register", data, {withCredentials: true,headers:{"Content-Type": "multiPart/form-data"}});
+        dispatch(userSlice.actions.registerSuccess());
+        toast.success(response.data.message);
+        dispatch(userSlice.actions.clearAllErrors());
+    } catch (error) {
+        dispatch(userSlice.actions.registerFailed());
+        toast.error(error.response.data.message);
+        dispatch(userSlice.actions.clearAllErrors());
+    }
+};
 
 export const logout = ()=> async(dispatch)=> {
     try {

@@ -110,7 +110,12 @@ const SideDrawer = () => {
           {!isAuthenticated ? (
             <>
               <div className="my-4 flex gap-2">
-                <Link to={"/sign-up"} className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl py-1 px-4 rounded-md text-white">Sign Up</Link>
+                <Link
+                  to={"/sign-up"}
+                  className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl py-1 px-4 rounded-md text-white"
+                >
+                  Sign Up
+                </Link>
                 <Link
                   to={"/login"}
                   className="text-[#DECCBE] bg-transparent border-[#DECCBE] border-2 hover:bg-[#fffefd] hover:text-[#fdba88] font-bold text-xl text-xl py-1 px-4 rounded-md"
@@ -122,7 +127,10 @@ const SideDrawer = () => {
           ) : (
             <>
               <div className="my-4 flex gap-4 w-fit" onClick={handleLogout}>
-                <button className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl text-xl py-1 px-4 rounded-md text-white"> Logout</button>
+                <button className="bg-[#D6482B] font-semibold hover:bg-[#b8381e] text-xl text-xl py-1 px-4 rounded-md text-white">
+                  {" "}
+                  Logout
+                </button>
               </div>
             </>
           )}
