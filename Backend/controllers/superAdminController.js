@@ -109,7 +109,7 @@ export const fetchAllUsers = catchAsyncErrors(async (req, res, next) => {
   const bidders = users.filter((user) => user.role === "Bidder");
   const auctioneers = users.filter((user) => user.role === "Auctioneer");
 
-  const tranformDataToMonthlyArray = (data, totalMonths = 12) => {
+  const transformDataToMonthlyArray = (data, totalMonths = 12) => {
     const result = Array(totalMonths).fill(0);
 
     data.forEach((item) => {
@@ -119,8 +119,8 @@ export const fetchAllUsers = catchAsyncErrors(async (req, res, next) => {
     return result;
   };
 
-  const biddersArray = tranformDataToMonthlyArray(bidders);
-  const auctioneersArray = tranformDataToMonthlyArray(auctioneers);
+  const biddersArray = transformDataToMonthlyArray(bidders);
+  const auctioneersArray = transformDataToMonthlyArray(auctioneers);
 
   res.status(200).json({
     success: true,
@@ -145,7 +145,7 @@ export const monthlyRevenue = catchAsyncErrors(async (req, res, next) => {
     },
   ]);
 
-  const tranformDataToMonthlyArray = (payments, totalMonths = 12) => {
+  const transformDataToMonthlyArray = (payments, totalMonths = 12) => {
     const result = Array(totalMonths).fill(0);
 
     payments.forEach((payment) => {
@@ -155,7 +155,7 @@ export const monthlyRevenue = catchAsyncErrors(async (req, res, next) => {
     return result;
   };
 
-  const totalMonthlyRevenue = tranformDataToMonthlyArray(payments);
+  const totalMonthlyRevenue = transformDataToMonthlyArray(payments);
   res.status(200).json({
     success: true,
     totalMonthlyRevenue,
